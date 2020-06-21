@@ -1,5 +1,5 @@
 # spatio_textual_search
 Comparison of:
-** Text-Retrieval techniques
-** Spatial Data Retriaval techniques
-** Spatio-Textual Retrieval techniques
+- Text-Retrieval techniques<br>
+- Spatial Data Retriaval techniques<br>
+- Spatio-Textual Retrieval techniques<br>
