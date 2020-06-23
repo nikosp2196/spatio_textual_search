@@ -1,3 +1,6 @@
+import time
+
+
 def generate_inverted_index(reviews_dict_list):
     tags_list = []
     bags_of_restaurants = []
@@ -34,19 +37,19 @@ def get_tag_frequency_list(bags_of_restaurants):
 
 
 def kwSearchIF(text_list, tags_list, bags_list):
-
+    start_time = time.time()
     s_text_list = sorted(text_list)
 
     if_indexes = merge_join(s_text_list, tags_list)
     if if_indexes == -1:
-        return []
+        return [],(time.time() - start_time)
 
     r_intersection = set(bags_list[if_indexes[0]])
     if len(if_indexes) > 1:
         for i in range(1, len(if_indexes)):
             r_intersection = r_intersection.intersection(bags_list[if_indexes[i]])
 
-    return list(r_intersection)
+    return list(r_intersection), (time.time() - start_time)
 
 
 def merge_join(q, tag_list):
@@ -65,3 +68,17 @@ def merge_join(q, tag_list):
     return results
 
 
+def kwSearchRaw(text_list, reviews):
+    start_time = time.time()
+    results = []
+    for i,r in enumerate(reviews):
+        valid_review = True
+        for q in text_list:
+            if q not in r['tags']:
+                valid_review = False
+                break
+        
+        if valid_review:
+            results.append(i)
+    
+    return results, (time.time() - start_time)
