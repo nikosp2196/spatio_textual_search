@@ -9,7 +9,7 @@ from text_search import *
 # SOME OF THE TEXTUAL AND SPATIAL SEARCH FUNCTIONS
 # BUT APPROPRIATELY MODIFIED TO PIPELINE THE RESULTS
 # OF THE FIRST SEARCH IN THE SECOND SEARCH TO FILTER
-# THEM 
+# THEM       
 
 
 def kwSpaSearchIF(r_query, t_query, tags_list, bags_of_restaurants, x_list, y_list, grid, restaurants_list):
