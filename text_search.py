@@ -1,7 +1,6 @@
 ###########################
 # PANTELIDIS NIKOS AM2787 #
 ###########################
-import time
 
 
 def generate_inverted_index(reviews_dict_list):
@@ -40,19 +39,18 @@ def get_tag_frequency_list(bags_of_restaurants):
 
 
 def kwSearchIF(text_list, tags_list, bags_list):
-    start_time = time.time()
     s_text_list = sorted(text_list)
 
     if_indexes = merge_join(s_text_list, tags_list)
     if if_indexes == -1:
-        return [],(time.time() - start_time)
+        return []
 
     r_intersection = set(bags_list[if_indexes[0]])
     if len(if_indexes) > 1:
         for i in range(1, len(if_indexes)):
             r_intersection = r_intersection.intersection(bags_list[if_indexes[i]])
 
-    return list(r_intersection), (time.time() - start_time)
+    return list(r_intersection)
 
 
 def merge_join(q, tag_list):
@@ -72,7 +70,6 @@ def merge_join(q, tag_list):
 
 
 def kwSearchRaw(text_list, reviews):
-    start_time = time.time()
     results = []
     for i,r in enumerate(reviews):
         valid_review = True
@@ -84,4 +81,4 @@ def kwSearchRaw(text_list, reviews):
         if valid_review:
             results.append(i)
     
-    return results, (time.time() - start_time)
+    return results
