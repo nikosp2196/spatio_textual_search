@@ -1,3 +1,6 @@
+###########################
+# PANTELIDIS NIKOS AM2787 #
+###########################
 import loader
 import spatial_search as ss
 import sys

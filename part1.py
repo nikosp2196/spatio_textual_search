@@ -1,3 +1,6 @@
+###########################
+# PANTELIDIS NIKOS AM2787 #
+###########################
 import loader
 import text_search as ts
 import sys
