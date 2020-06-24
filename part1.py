@@ -4,7 +4,7 @@ import sys
 
 
 path = 'Data\\Restaurants_London_England.tsv'
-restaurants_list = loader.load_reviews_to_list(path)
+restaurants_list, borders = loader.load_reviews_to_list(path)
 
 tags_list, bags_of_restaurants = ts.generate_inverted_index(restaurants_list)
 
@@ -31,3 +31,6 @@ for i in result_indexes_if:
     print(restaurants_list[i]['review_id'])
     print('location:', restaurants_list[i]['x'], ',', restaurants_list[i]['y'])
     print('tags:', restaurants_list[i]['tags'], '\n')
+
+
+print(borders)
