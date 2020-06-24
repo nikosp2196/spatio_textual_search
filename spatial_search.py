@@ -12,6 +12,7 @@ def binary_search(mylist, target):
         else:
             result = median
     except:
+        print("ERROR")
         print(mylist)
         print(target)
         print(list_size)
@@ -52,7 +53,23 @@ def add_restaurants_to_grid(x_buckets, y_buckets, restaurants_list):
     for ir, r in enumerate(restaurants_list):
         x = binary_search(x_buckets, r['x'])
         y = binary_search(y_buckets, r['y'])
-        print()
+
         grid[y][x].append(ir)
 
     return grid
+
+
+def print_grid_info(borders, grid):
+    print_borders_info(borders)
+    print_non_empty_cells(grid)
+
+
+def print_borders_info(borders):
+    print('bounds:', borders['min_x'], borders['max_x'], borders['min_y'], borders['max_y'])
+    print('widths:', borders['max_x'] - borders['min_x'], borders['max_y'] - borders['min_y'])
+
+def print_non_empty_cells(grid):
+    for j in range(len(grid)):
+        for i in range(len(grid[0])):
+            if len(grid[i][j]) > 0:
+                print(j, i, len(grid[i][j])) 
