@@ -1,3 +1,4 @@
+import time
 
 
 def binary_search(mylist, target):
@@ -73,3 +74,39 @@ def print_non_empty_cells(grid):
         for i in range(len(grid[0])):
             if len(grid[i][j]) > 0:
                 print(j, i, len(grid[i][j])) 
+
+
+def spaSearchGrid(r_query, x_list, y_list, grid, restaurants_list):
+    start_time = time.time()
+    x_min_index = binary_search(x_list, r_query[0])
+    x_max_index = binary_search(x_list, r_query[1])
+    #print("X:", x_min_index, x_max_index)
+    #print("X_LIST:", x_list[x_min_index], x_list[x_max_index])
+
+    y_min_index = binary_search(y_list, r_query[2])
+    y_max_index = binary_search(y_list, r_query[3])
+    #print("Y:", y_min_index, y_max_index)
+    #print("Y_LIST:", y_list[y_min_index], y_list[y_max_index])
+    
+    results = []
+    for i in range(y_min_index,y_max_index + 1):
+        for j in range(x_min_index,x_max_index + 1):
+            if len(grid[i][j]) > 0:
+                for r in grid[i][j]:
+                    if restaurants_list[r]['x'] >= r_query[0] and \
+                        restaurants_list[r]['x'] <= r_query[1] and \
+                        restaurants_list[r]['y'] >= r_query[2] and \
+                        restaurants_list[r]['y'] <= r_query[3]:
+                        results.append(restaurants_list[r])
+
+    return results, time.time() - start_time
+
+
+def spaSearchRaw(r_query, restaurants_list):
+    start_time = time.time()
+    results = []
+    for r in restaurants_list:
+        if r['x'] >= r_query[0] and r['x'] <= r_query[1] and r['y'] >= r_query[2] and r['y'] <= r_query[3]:
+            results.append(r)
+        
+    return results, time.time() - start_time
