@@ -11,6 +11,25 @@ from text_search import *
 # OF THE FIRST SEARCH IN THE SECOND SEARCH TO FILTER
 # THEM       
 
+def kwSpaSearchRaw(r_query, t_query, restaurants_list):
+    results = []
+
+    for i,r in enumerate(restaurants_list):
+        valid_review = True
+
+        for q in t_query:
+            if q not in r['tags']:
+                valid_review = False
+                break
+        if valid_review and r['x'] >= r_query[0] and r['x'] <= r_query[1] and \
+            r['y'] >= r_query[2] and r['y'] <= r_query[3]:
+
+            results.append(i)
+    
+    return results
+
+
+
 
 def kwSpaSearchIF(r_query, t_query, tags_list, bags_of_restaurants, x_list, y_list, grid, restaurants_list):
     tags_results = kwSearchIF(t_query, tags_list, bags_of_restaurants)
@@ -20,7 +39,7 @@ def kwSpaSearchIF(r_query, t_query, tags_list, bags_of_restaurants, x_list, y_li
 
 def kwSpaSearchGrid(r_query, t_query, tags_list, bags_of_restaurants, x_list, y_list, grid, restaurants_list):
     grid_results = spaSearchGrid(r_query,x_list,y_list,grid,restaurants_list)
-    print("GRID",grid_results[0])
+    #print("GRID",grid_results[0])
     final_results = kwSearchIFAfterGrid(t_query, tags_list, bags_of_restaurants, grid_results)
     return final_results
 
@@ -29,7 +48,7 @@ def kwSearchIFAfterGrid(text_list, tags_list, bags_list, grid_results):
     s_text_list = sorted(text_list)
 
     if_indexes = merge_join(s_text_list, tags_list)
-    print(if_indexes)
+    #print(if_indexes)
     if if_indexes == -1:
         return []
 
@@ -54,11 +73,11 @@ def spaSearchGridAfterIF(r_query, tags_results, x_list, y_list, grid, restaurant
         for j in range(x_min_index,x_max_index + 1):
             if len(grid[i][j]) > 0:
                 for r in grid[i][j]:
-                    if r in tags_results and \
-                        restaurants_list[r]['x'] >= r_query[0] and \
-                        restaurants_list[r]['x'] <= r_query[1] and \
-                        restaurants_list[r]['y'] >= r_query[2] and \
-                        restaurants_list[r]['y'] <= r_query[3]:
-                        results.append(r)
+                    if r in tags_results:
+                        if restaurants_list[r]['x'] >= r_query[0] and \
+                            restaurants_list[r]['x'] <= r_query[1] and \
+                            restaurants_list[r]['y'] >= r_query[2] and \
+                            restaurants_list[r]['y'] <= r_query[3]:
+                            results.append(r)
 
     return results

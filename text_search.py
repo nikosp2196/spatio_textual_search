@@ -69,9 +69,9 @@ def merge_join(q, tag_list):
     return results
 
 
-def kwSearchRaw(text_list, reviews):
+def kwSearchRaw(text_list, restaurants_list):
     results = []
-    for i,r in enumerate(reviews):
+    for i,r in enumerate(restaurants_list):
         valid_review = True
         for q in text_list:
             if q not in r['tags']:
