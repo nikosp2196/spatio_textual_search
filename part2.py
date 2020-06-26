@@ -42,19 +42,19 @@ results_raw = ss.spaSearchRaw(r_query, restaurants_list)
 raw_time = time.time() - start_time
 print("\n|==============================================================|\n")
 print('-->spaSearchRaw:', len(results_raw), 'results, cost:', raw_time, 'seconds\n')
-'''for r in results_raw:
+for r in results_raw:
     print(restaurants_list[r]['review_id'])
     print('location:', restaurants_list[r]['x'], ',', restaurants_list[r]['y'])
-    print('tags:', restaurants_list[r]['tags'], '\n')'''
+    print('tags:', restaurants_list[r]['tags'], '\n')
 
 
 start_time = time.time()
 results_grid = ss.spaSearchGrid(r_query, x_list, y_list, grid, restaurants_list)
 grid_time = time.time() - start_time
 print("\n|==============================================================|\n")
-print('spaSearchGrid:', len(results_grid), 'results, cost:', grid_time, 'seconds\n')
-'''for r in results_grid:
+print('-->spaSearchGrid:', len(results_grid), 'results, cost:', grid_time, 'seconds\n')
+for r in results_grid:
     print(restaurants_list[r]['review_id'])
     print('location:', restaurants_list[r]['x'], ',', restaurants_list[r]['y'])
-    print('tags:', restaurants_list[r]['tags'], '\n')'''
+    print('tags:', restaurants_list[r]['tags'], '\n')
 print("\n|==============================================================|\n")

@@ -28,10 +28,10 @@ start_time = time.time()
 result_indexes_raw = ts.kwSearchRaw(q, restaurants_list)
 t_raw = time.time() - start_time
 print('-->kwSearchRaw:', len(result_indexes_raw), 'results, cost =', t_raw, 'seconds')
-'''for i in result_indexes_raw:
+for i in result_indexes_raw:
     print(restaurants_list[i]['review_id'])
     print('location:', restaurants_list[i]['x'], ',', restaurants_list[i]['y'])
-    print('tags:', restaurants_list[i]['tags'], '\n')'''
+    print('tags:', restaurants_list[i]['tags'], '\n')
 
 print("|==============================================================|\n")
 
@@ -39,9 +39,9 @@ start_time = time.time()
 result_indexes_if = ts.kwSearchIF(q, tags_list, bags_of_restaurants)
 t_if = time.time() - start_time
 print('-->kwSearchIF:', len(result_indexes_if), 'results, cost =', t_if, 'seconds')
-'''for i in result_indexes_if:
+for i in result_indexes_if:
     print(restaurants_list[i]['review_id'])
     print('location:', restaurants_list[i]['x'], ',', restaurants_list[i]['y'])
-    print('tags:', restaurants_list[i]['tags'], '\n')'''
+    print('tags:', restaurants_list[i]['tags'], '\n')
 
 print("|==============================================================|\n")

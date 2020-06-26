@@ -45,10 +45,10 @@ results_raw = kwSpaSearchRaw(r_query, t_query, restaurants_list)
 raw_time = time.time() - start_time
 print("\n|==============================================================|\n")
 print('-->kwSpaSearchRaw:', len(results_raw), 'results, cost:', raw_time, 'seconds\n')
-'''for r in results_raw:
+for r in results_raw:
     print(restaurants_list[r]['review_id'])
     print('location:', restaurants_list[r]['x'], ',', restaurants_list[r]['y'])
-    print('tags:', restaurants_list[r]['tags'], '\n')'''
+    print('tags:', restaurants_list[r]['tags'], '\n')
 
 
 start_time = time.time()
@@ -56,10 +56,10 @@ results_if = kwSpaSearchIF(r_query, t_query,tags_list, bags_of_restaurants, x_li
 if_time = time.time() - start_time
 print("\n|==============================================================|\n")
 print('-->kwSpaSearchIF:', len(results_if), 'results, cost:', if_time, 'seconds\n')
-'''for r in results_if:
+for r in results_if:
     print(restaurants_list[r]['review_id'])
     print('location:', restaurants_list[r]['x'], ',', restaurants_list[r]['y'])
-    print('tags:', restaurants_list[r]['tags'], '\n')'''
+    print('tags:', restaurants_list[r]['tags'], '\n')
 
 
 start_time = time.time()
@@ -67,9 +67,9 @@ results_grid = kwSpaSearchGrid(r_query, t_query,tags_list, bags_of_restaurants, 
 grid_time = time.time() - start_time
 print("\n|==============================================================|\n")
 print('-->kwSpaSearchGrid:', len(results_if), 'results, cost:', grid_time, 'seconds\n')
-'''for r in results_grid:
+for r in results_grid:
     print(restaurants_list[r]['review_id'])
     print('location:', restaurants_list[r]['x'], ',', restaurants_list[r]['y'])
-    print('tags:', restaurants_list[r]['tags'], '\n')'''
+    print('tags:', restaurants_list[r]['tags'], '\n')
 
 print("\n|==============================================================|\n")
