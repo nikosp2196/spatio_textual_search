@@ -6,14 +6,10 @@
 def generate_inverted_index(reviews_dict_list):
     tags_list = []
     bags_of_restaurants = []
-    # i_r: restaurant review index
-    # r: restaurant review
+
     for i_r,r in enumerate(reviews_dict_list):
-        # t: current tag of r
         for t in r['tags']:
             new_tag = True
-            # i_st: saved tag index
-            # st: current saved tag
             for i_st,st in enumerate(tags_list):
                 if st == t:
                     new_tag = False
@@ -39,9 +35,8 @@ def get_tag_frequency_list(bags_of_restaurants):
 
 
 def kwSearchIF(text_list, tags_list, bags_list):
-    s_text_list = sorted(text_list)
 
-    if_indexes = merge_join(s_text_list, tags_list)
+    if_indexes = merge_join(text_list, tags_list)
     if if_indexes == -1:
         return []
 
@@ -54,6 +49,7 @@ def kwSearchIF(text_list, tags_list, bags_list):
 
 
 def merge_join(q, tag_list):
+    q = sorted(q)
     q_ptr = 0
     t_ptr = 0
     results = []

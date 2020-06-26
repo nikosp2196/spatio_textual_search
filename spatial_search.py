@@ -6,7 +6,6 @@
 def binary_search(mylist, target):
     list_size = len(mylist)
     median = list_size // 2
-    #print(mylist)
     try:
         if target > mylist[median][1]:
             result = binary_search(mylist[median+1:], target) + median + 1
